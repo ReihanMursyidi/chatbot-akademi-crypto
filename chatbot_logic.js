@@ -1,4 +1,4 @@
-// ==========================================
+    // ==========================================
 // LOGIKA CHATBOT AKADEMI CRYPTO (VERSI FORM)
 // ==========================================
 
@@ -120,4 +120,5 @@ async function sendMessage() {
     }
 
     chatBody.scrollTop = chatBody.scrollHeight;
+
 }
