@@ -1,0 +1,311 @@
+ /* --- 1. GAYA TAMPILAN WEBSITE (HITAM & UNGU) --- */
+        body {
+            margin: 0;
+            font-family: 'Mulish', sans-serif; /* Font modern */
+            background-color: #000000; /* Hitam pekat */
+            color: white;
+            overflow-x: hidden; /* Hilangkan scroll samping */
+        }
+
+        /* Navbar Sederhana */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background-color: transparent;
+            box-sizing: border-box;
+        }
+        .logo { font-weight: bold; font-size: 1.2rem; letter-spacing: 1px; }
+        .logo img {
+            height: 30px; /* Sesuaikan tinggi logo */
+        }
+        .logo span { color: #a855f7; } /* Ungu */
+        
+        .nav-btn {
+            background: transparent; border: 1px solid #333; color: white; 
+            padding: 8px 20px; cursor: pointer; border-radius: 5px; margin-left: 10px;
+            transition: 0.3s; font-family: 'Roboto', sans-serif; font-size: 17px;
+        }
+        .nav-btn.purple { background-color: #a855f7; border-color: #a855f7; font-weight: bold; }
+        .nav-btn:hover { opacity: 0.8; }
+
+        /* Hero Section (Bagian Tengah) */
+        .hero {
+            text-align: center;
+            padding: 150px 20px 80px 20px; /* Padding atas besar karena navbar fixed */
+            background: radial-gradient(circle at center, #1a0b2e 0%, #000000 70%);
+            min-height: 100vh;
+        }
+        
+        h1 {
+            font-size: 60px;
+            max-width: 900px;
+            margin: 0 auto 20px auto;
+            line-height: 1.1;
+        }
+        
+        .highlight { color: #7b6fff; }
+
+        .sub-text {
+            font-size: 22px;
+            color: #ffffff;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        /* Kotak Video Dummy */
+        .video-container {
+            margin: 0 auto;
+            width: 80%;
+            max-width: 800px;
+            height: 450px;
+            background-color: #000; /* Warna dasar hitam */
+            background-size: cover; /* Agar thumbnail memenuhi kotak */
+            background-position: center;
+            border: 1px solid #333;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.1);
+            cursor: pointer; /* Agar kursor berubah jadi jari */
+            overflow: hidden; /* Agar video tidak keluar garis border radius */
+            position: relative;
+        }
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .play-button {
+            width: 70px; height: 50px; background: red; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .triangle {
+            width: 0; height: 0; 
+            border-top: 10px solid transparent; border-bottom: 10px solid transparent; 
+            border-left: 20px solid white;
+        }
+
+        /* --- 2. FITUR CHATBOT & WHATSAPP --- */
+        
+        /* Tombol WhatsApp (Pojok Kanan Bawah) */
+        .wa-float {
+            position: fixed; bottom: 30px; right: 30px;
+            width: 60px; height: 60px;
+            background-color: #25d366;
+            box-shadow: 0 0 20px rgba(85, 247, 99, 0.6);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            transition: transform 0.2s;
+            cursor: pointer; z-index: 100;
+        }
+        .wa-float:hover { transform: scale(1.1); }
+
+        /* Tombol Chatbot (Sebelah Kiri WA) */
+        .chat-float {
+            position: fixed; bottom: 30px; right: 110px; /* Geser ke kiri */
+            width: 60px; height: 60px;
+            background-color: #a855f7; /* Ungu Akademi Crypto */
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.6); /* Efek glowing ungu */
+            cursor: pointer; z-index: 100;
+            transition: transform 0.2s;
+        }
+        .chat-float:hover { transform: scale(1.1); }
+        .chat-float svg { fill: white; width: 30px; height: 30px; }
+
+        /* Jendela Chat (Default: Tersembunyi) */
+        .chat-window {
+            display: none; /* Awalnya hidden */
+            position: fixed; bottom: 100px; right: 110px;
+            width: 350px; height: 500px;
+            background-color: #1e1e1e;
+            border-radius: 15px;
+            border: 1px solid #333;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            flex-direction: column;
+            z-index: 101;
+            overflow: hidden;
+            font-family: 'Mulish', sans-serif;
+        }
+
+        /* Header Chat */
+        .chat-header {
+            background: linear-gradient(90deg, #a855f7, #7e22ce);
+            padding: 15px;
+            color: white;
+            font-weight: bold;
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .chat-header .status { font-size: 0.8rem; font-weight: normal; opacity: 0.9; }
+
+        /* Isi Chat (Tempat Percakapan) */
+        .chat-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background-color: #121212;
+        }
+
+        /* Input Area */
+        .chat-input-area {
+            padding: 15px;
+            background-color: #1e1e1e;
+            border-top: 1px solid #333;
+            display: flex;
+            gap: 10px;
+        }
+        .chat-input-area input {
+            flex: 1; padding: 12px; border-radius: 25px; border: 1px solid #444;
+            background: #2d2d2d; color: white; outline: none;
+        }
+        .chat-input-area input:focus { border-color: #a855f7; }
+        .chat-input-area button {
+            background: #a855f7; border: none; color: white; width: 45px; height: 45px;
+            border-radius: 50%; cursor: pointer; font-size: 1.2rem;
+            display: flex; align-items: center; justify-content: center;
+            transition: 0.2s;
+        }
+        .chat-input-area button:hover { background: #9333ea; }
+
+        /* Bubble Chat */
+        .msg {
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 15px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+        .msg-bot {
+            background-color: #2d2d2d;
+            color: #eee;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+        .msg-bot ul, .msg-bot ol {
+            margin: 5px 0;
+            padding-left: 20px;
+        }
+        .msg-bot p{
+            margin: 0 0 8px 0;
+        }
+        .msg-bot p:last-child {
+            margin-bottom: 0;
+        }
+        .msg-bot strong {
+            color: #a855f7; /* Memberi warna ungu pada teks tebal */
+        }
+        .msg-user {
+            background-color: #7e22ce; /* Ungu gelap */
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+        
+        /* Referensi Sumber */
+        .source-box {
+            font-size: 0.75rem; color: #aaa; margin-top: 8px; padding-top: 8px;
+            border-top: 1px solid #444;
+        }
+        .source-box span { color: #a855f7; }
+
+        .site-footer {
+            background-color: #000000; /* Background Hitam Pekat */
+            color: #ffffff;
+            text-align: center;
+            padding-top: 50px;
+            width: 100%;
+            margin: 0 auto;
+            align-self:center;
+            border-top: 1px solid #333; /* Garis pemisah tipis */
+        }
+
+        .footer-container {
+            padding-bottom: 30px;
+            border-bottom: 1px solid #333; /* Garis pemisah tipis */
+
+            align-self: center;
+        }
+
+        /* --- Styling Logo --- */
+        .footer-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            /* Warna ungu neon mirip referensi */
+            stroke: #d946ef; 
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 1.1;
+            letter-spacing: 1px;
+        }
+
+        /* --- Styling Info Kontak --- */
+        .footer-info p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #e5e5e5;
+        }
+
+        /* --- Styling Bagian Bawah (Legal) --- */
+        .footer-legal {
+            padding-bottom: 30px;
+            font-size: 13px;
+            color: #a3a3a3; /* Warna abu-abu agak gelap */
+            background-color: #000000;
+        }
+
+        .footer-legal strong {
+            color: #ffffff; /* Memutihkan bagian nama kementrian */
+            font-weight: 700;
+        }
+
+        /* Animasi Loading (...) */
+        .loading-dots:after {
+            content: '.'; animation: dots 1.5s steps(5, end) infinite;
+        }
+        @keyframes dots { 0%, 20% { content: '.'; } 40% { content: '..'; } 60% { content: '...'; } 100% { content: ''; } }
+
+/* Gaya tambahan untuk scrollbar di chat body */
+.chat-body::-webkit-scrollbar {
+    width: 10px;
+}
+
+.chat-body::-webkit-scrollbar-track {
+    background: #0f0f0f;
+    border-radius: 5px;
+}
+
+.chat-body::-webkit-scrollbar-thumb{
+    background: #9638c5;
+    border-radius: 5px;
+    border: 2px solid #0f0f0f;
+}
+
+.chat-body::-webkit-scrollbar-thumb:hover {
+    background: #BD48F9;
+}
