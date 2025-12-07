@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
 // FUNGSI LOAD HISTORY
 async function loadHistory() {
     try {
-        const response = await fetch(`URL_NGROK_ANDA/history/${sessionId}`, 
+        const response = await fetch(`https://unremaining-unmanipulatory-porter.ngrok-free.dev/history/${sessionId}`, 
         {
             headers: {'ngrok-skip-browser-warning': 'true'}
         });
@@ -125,4 +125,5 @@ async function sendMessage() {
     chatBody.scrollTop = chatBody.scrollHeight;
 
 }
+
 
