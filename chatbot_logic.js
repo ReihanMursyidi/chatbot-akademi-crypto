@@ -1,4 +1,4 @@
-    // ==========================================
+// ==========================================
 // LOGIKA CHATBOT AKADEMI CRYPTO (VERSI FORM)
 // ==========================================
 
@@ -34,10 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
 // FUNGSI LOAD HISTORY
 async function loadHistory() {
     try {
-        const response = await fetch(`https://unremaining-unmanipulatory-porter.ngrok-free.dev/history/${sessionId}`, 
-        {
-            headers: {'ngrok-skip-browser-warning': 'true'}
-        });
+        const response = await fetch(`http://127.0.0.1:8000/history/${sessionId}`);
         if (!response.ok) return;
 
         const history = await response.json();
@@ -96,9 +93,9 @@ async function sendMessage() {
     chatBody.scrollTop = chatBody.scrollHeight;
 
     try {
-        const response = await fetch('https://unremaining-unmanipulatory-porter.ngrok-free.dev/chat', {
+        const response = await fetch('http://127.0.0.1:8000/chat', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 question: question,
                 session_id: sessionId
@@ -123,7 +120,4 @@ async function sendMessage() {
     }
 
     chatBody.scrollTop = chatBody.scrollHeight;
-
 }
-
-
