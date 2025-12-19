@@ -34,19 +34,4 @@ Dibangun dengan **FastAPI** di backend dan **Vanilla JavaScript** di frontend de
 * **JavaScript (Vanilla):** Logika fetch API dan manajemen DOM.
 * **Marked.js:** Library untuk merender format markdown dari bot.
 
----
 
-## 📂 Struktur Project
-
-```text
-.
-├── chatbot_backend.py     # Server utama FastAPI & Logika AI
-├── chatbot_logic.js       # Logika Frontend (Fetch API & UI Interaksi)
-├── index.html             # Landing Page Akademi Crypto
-├── style.css              # Styling Website (Dark Mode)
-├── training_knowledge.py  # (Diperlukan) Script untuk membuat vector database
-├── faiss_index/           # (Auto-generated) Folder database vector
-├── chat_logs/             # (Auto-generated) Folder riwayat chat user
-├── logo-new-1-2-1.webp    # Aset Logo
-├── .env                   # File konfigurasi API Key
-└── requirements.txt       # Daftar library Python
